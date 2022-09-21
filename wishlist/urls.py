@@ -4,6 +4,9 @@ from wishlist.views import show_xml #sesuaikan dengan nama fungsi yang dibuat
 from wishlist.views import show_json #sesuaikan dengan nama fungsi yang dibuat
 from wishlist.views import show_json_by_id #sesuaikan dengan nama fungsi yang dibuat
 from wishlist.views import show_xml_by_id #sesuaikan dengan nama fungsi yang dibuat
+from wishlist.views import register 
+from wishlist.views import login_user 
+from wishlist.views import logout_user 
 
 app_name = 'wishlist'
 
@@ -13,4 +16,7 @@ urlpatterns = [
     path('json/', show_json, name='show_json'),
     path('json/<int:id>', show_json_by_id, name='show_json_by_id'), #sesuaikan dengan nama fungsi yang dibuat
     path('xml/<int:id>', show_xml_by_id, name='show_xml_by_id'), #sesuaikan dengan nama fungsi yang dibuat
+    path('register/', register, name='register'),
+    path('login/', login_user, name='login'), 
+    path('logout/', logout_user, name='logout'), 
 ]
