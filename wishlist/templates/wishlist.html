@@ -1,25 +1,67 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+        li {
+          float: left;
+        }
+        li a {
+          display: block;
+          padding: 8px;
+          background-color: rgb(198, 201, 201);
+        }
+        </style>
+        </head>
+        <body>
+        
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">{{nama}}</a></li>
+          <li><a href="{% url 'wishlist:logout' %}">Logout</a></li>
+        </ul>
+        <th><b>Klik nama untuk kejutan!</b></th>
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-{% block content %}
-<h5>Nama: </h5>
-<b>{{nama}}</b>
-
-<table>
-    <tr>
-    <th>Nama Barang</th>
-    <th>Harga Barang</th>
-    <th>Deskripsi</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for barang in list_barang %}
-    <tr>
-        <th>{{barang.nama_barang}}</th>
-        <th>{{barang.harga_barang}}</th>
-        <th>{{barang.deskripsi}}</th>
-    </tr>
-{% endfor %}
-</table>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
-
-{% endblock content %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wishlist dengan bootstrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  </head>
+  <body>
+    <h3 class="text-center">
+        Barang yang ada di wishlist:
+        <small class="text-muted">Buatan Vinsensius Ferdinando (2106751221)</small>
+    </h3>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th scope="col", class="text-center"><b>Nama Barang</b></th>
+            <th scope="col", class="text-center" ><b>Harga Barang</b></th>
+            <th scope="col", class="text-center" ><b>Deskripsi</b></th>
+            </tr>
+            {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+            {% for barang in list_barang %}
+            <tr>
+                <th class="text-xl-center">{{barang.nama_barang}}</th>
+                <th class="text-xl-center">{{barang.harga_barang}}</th>
+                <th class="text-xl-center">{{barang.deskripsi}}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <figure class="text-center">
+        <blockquote class="blockquote">
+          <p>Masukin wishlist doang, dibayar nanti</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          - Vinsensius Ferdinando<cite title="Source Title">(2106751221)</cite>
+        </figcaption>
+      </figure>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>
