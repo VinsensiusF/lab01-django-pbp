@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+  <style>
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+    li {
+    float: left;
+    }
+    li a {
+    display:inline-block;
+    padding: 8px;
+    background-color: rgb(198, 201, 201);
+    }
+  </style>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">{{nama}}</a></li>
+    <li><a href="{% url 'wishlist:logout' %}">Logout</a></li>
+  </ul>
+  <th><b>Klik nama untuk kejutan!</b></th>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="{% static 'wishlist_ajax.js' %}"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wishlist dengan Bootstrap dan Ajax</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <h5><mark>Nama: <b>{{nama}}</b></mark></h5>
+  <h5><mark>Sesi terakhir login: {{ last_login }}</mark></h5>
+  <h3 class="text-center">
+    Barang yang ada di wishlist:
+    <small class="text-muted">Buatan Vinsensius Ferdinando (2106751221)</small>
+  </h3>
+  <table id="table" class="table table-hover table-striped table-bordered">
+    <tr>
+      <th class="item-table-cell text-center">Nama Barang</th>
+      <th class="item-table-cell text-center">Harga Barang</th>
+      <th class="item-table-cell text-center">Deskripsi</th>
+    </tr>
+  </table>
+
+  <figure class="text-center">
+    <blockquote class="blockquote">
+    <p>Masukin wishlist doang, dibayar nanti</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+    - Vinsensius Ferdinando<cite title="Source Title"> (2106751221)</cite>
+    </figcaption>
+  </figure>
+
+  <div class="container">
+    <h3 class="text-center"><mark>Masukkan item wishlist baru anda!</mark></h3>
+    <form id="form">
+      {% csrf_token %}
+      <table class="table table-hover mx-auto" style="width: inherit">
+        <tr>
+          <td class="text-right">Nama Barang : </td>
+          <td><input id="nama-barang-input" type="text" name="nama_barang" placeholder="Nama Barang"></td>
+        </tr>
+        <tr>
+          <td class="text-right">Harga Barang : </td>
+          <td><input id="harga-barang-input" type="text" name="harga_barang" placeholder="Harga Barang"></td>
+        </tr>
+        <tr>
+          <td class="text-right">Deskripsi : </td>
+          <td><input id="deskripsi-input" type="text" name="deskripsi" placeholder="Deskripsi"></td>
+        </tr>
+          <td colspan="2" class="text-center"><button id="create-button" type="submit" class="px-5 py-1.5 bg-success text-white">Save</button>
+        </td>
+    </table>
+    </form>
+  </div>
+
+</body>
+
+{% endblock content %}
